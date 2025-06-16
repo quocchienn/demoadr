@@ -1,0 +1,12 @@
+proxies: []
+
+script:
+  handlers:
+    - url-regex: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+      script: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/Locket_Gold.js"
+
+    - url-regex: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers)
+      script: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/deleteheader.js"
+
+rules:
+  - MATCH,DIRECT
