@@ -1,0 +1,21 @@
+#!name: Locket Gold
+#!desc: By: Quốc Chiến
+
+script:
+  - name: revenuecat
+    type: http-response
+    match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+    script: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/Locket_Gold.js"
+    requires-body: true
+    max-size: -1
+    timeout: 60
+
+  - name: deleteHeader
+    type: http-request
+    match: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers)
+    script: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/deleteheader.js"
+    timeout: 60
+
+mitm:
+  hostname:
+    - "api.revenuecat.com"
