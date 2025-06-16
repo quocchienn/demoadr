@@ -4,6 +4,8 @@ allow-lan: true
 mode: rule
 log-level: info
 
+proxies: []
+
 script:
   handlers:
     - url-regex: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
