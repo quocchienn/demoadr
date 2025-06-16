@@ -1,0 +1,16 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+
+script:
+  handlers:
+    - url-regex: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$)
+      script: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/Locket_Gold.js"
+
+    - url-regex: ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers)
+      script: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/deleteheader.js"
+
+rules:
+  - MATCH,DIRECT
