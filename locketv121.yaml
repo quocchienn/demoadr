@@ -1,0 +1,24 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+
+proxies:
+  - name: dummy
+    type: socks5
+    server: 127.0.0.1
+    port: 12345
+    
+script:
+  name: combined
+  type: http-response
+  match: ^https:\/\/api\.revenuecat\.com\/.* 
+  script: "https://raw.githubusercontent.com/quocchienn/demoadr/refs/heads/main/Locket_Gold.js"
+  requires-body: true
+  max-size: -1
+  timeout: 60
+
+mitm:
+  hostname:
+    - "api.revenuecat.com"
