@@ -1,0 +1,15 @@
+#!name: Locket Gold
+#!desc: By: Quốc Chiến
+
+script:
+  name: combined
+  type: http-response
+  match: ^https:\/\/api\.revenuecat\.com\/.* 
+  script: "https://raw.githubusercontent.com/quocchienn/demoadr/refs/heads/main/Locket_Gold.js"
+  requires-body: true
+  max-size: -1
+  timeout: 60
+
+mitm:
+  hostname:
+    - "api.revenuecat.com"
