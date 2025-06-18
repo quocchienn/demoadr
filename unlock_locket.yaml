@@ -1,0 +1,39 @@
+# unlock_locket.yaml - Cho FlyClash chạy module Locket_Gold.sgmodule
+
+mixed-port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 127.0.0.1:9090
+secret: ""
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxy-providers:
+  unlock:
+    type: http
+    url: "https://raw.githubusercontent.com/quocchienn/lockcrack/refs/heads/module/Locket_Gold.sgmodule"
+    interval: 86400
+    path: ./proxy_unlock.yaml
+    health-check:
+      enable: true
+      url: http://cp.cloudflare.com/generate_204
+      interval: 300
+
+proxy-groups:
+  - name: 🟡 Unlock Pro Locket
+    type: select
+    proxies:
+      - DIRECT
+    use:
+      - unlock
+
+rules:
+  - DOMAIN-KEYWORD,locket,DIRECT
+  - PROCESS-NAME,com.locket.widget,🟡 Unlock Pro Locket
+  - MATCH,DIRECT
